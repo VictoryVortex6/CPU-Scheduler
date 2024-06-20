@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Scheduling</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #343a40;
+        }
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .job {
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="number"] {
+            padding: 5px;
+            margin-right: 10px;
+            width: 80px;
+        }
+        button {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        pre {
+            background-color: #f1f1f1;
+            padding: 20px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <h1>Job Scheduling</h1>
+    <h3>Enter Job ID in order starting from 1</h3>
+    <form id="job-form">
+        <div id="jobs-container">
+            <div class="job">
+                <label>Job ID: <input type="number" name="id"></label>
+                <label>Burst Time: <input type="number" name="burst"></label>
+                <label>Arrival Time: <input type="number" name="arrival"></label>
+            </div>
+        </div>
+        <button type="button" onclick="addJob()">Add Another Job</button>
+        <button type="submit">Submit</button>
+    </form>
+    <h2>Output:</h2>
+    <pre id="output"></pre>
+    <script src="/static/script.js"></script>
+</body>
+</html>
