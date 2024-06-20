@@ -1,9 +1,15 @@
+# CPU Scheduling Web Application
 
----
+This project is a web application that allows users to input CPU scheduling parameters through a web form, submit them to a server, process them using a C++ program, and display the results back to the user.
+This document provides an in-depth explanation of various CPU scheduling algorithms implemented in a scheduler program using C++. Each algorithm manages the execution of processes (jobs) in different ways to optimize system performance based on specific criteria.
 
+## Technologies Used
+
+- **Frontend**: HTML, JavaScript (with Fetch API), CSS
+- **Backend**: Python (Flask)
+- **Integration**: Subprocess module for executing a C++ program
 # CPU Scheduling Algorithms - README
 
-This document provides an in-depth explanation of various CPU scheduling algorithms implemented in a scheduler program using C++. Each algorithm manages the execution of processes (jobs) in different ways to optimize system performance based on specific criteria.
 
 ## Table of Contents
 
@@ -11,7 +17,7 @@ This document provides an in-depth explanation of various CPU scheduling algorit
 2. [First-Come, First-Served (FCFS)](#first-come-first-served-fcfs)
 3. [Shortest Job First (SJF)](#shortest-job-first-sjf)
 4. [Shortest Remaining Time First (SRTF)](#shortest-remaining-time-first-srtf)
-5. [Round Robin (RR) with Dynamic Quantum](#round-robin-rr-with-dynamic-quantum)
+5. [Round Robin (RR)](#round-robin-rr)
 6. [Choosing the Best Algorithm](#choosing-the-best-algorithm)
 7. [Setup and Usage](#setup-and-usage)
 
@@ -399,7 +405,7 @@ void roundRobin(vector<Job> jobs, int quantum, ofstream& outputFile) {
 
 ---
 
-### Choosing the Best Algorithm
+## Choosing the Best Algorithm
 
 **Algorithm Selection Criteria:**
 
@@ -415,9 +421,29 @@ When choosing a CPU scheduling algorithm, consider the following factors:
 
 Based on the characteristics of the jobs (job burst times, arrival times, etc.), the program predicts the best scheduling algorithm using statistical analysis (`predictBestAlgorithm(jobs)`). The predicted algorithm (`predictedAlgorithm`) is then used to determine which scheduling algorithm (FCFS, SJF, SRTF, or RR) to apply.
 
----
 
-### Steps to Run the Project
+
+## Front End Description
+
+The frontend consists of three main components:
+
+1. **HTML (index.html)**:
+   - Provides the user interface with a form to input job details (Job ID, Burst Time, Arrival Time).
+   - Dynamically adds job input fields using JavaScript when users click the "Add Another Job" button.
+   - Submits job data to the server upon form submission.
+
+2. **JavaScript (script.js)**:
+   - Adds functionality to dynamically add job input fields (`addJob()` function).
+   - Handles form submission using the Fetch API to send job data to the server (`submit` event listener).
+
+3. **Python (app.py)**:
+   - Uses Flask to handle web requests and serve the HTML template.
+   - Receives job data via a POST request (`/schedule` endpoint).
+   - Writes job data to a file (`input.txt`), executes a C++ program (`./main`) using subprocess to process the job scheduling, and reads the output from a file (`output.txt`).
+   - Returns the output as a JSON response to the frontend.
+
+
+### Setup and Usage
 
 1. *Compile the C++ Program*:
    bash
